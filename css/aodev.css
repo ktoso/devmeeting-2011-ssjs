@@ -1,0 +1,40 @@
+
+body { font-family: Helvetica; font-size: 0.9em; }
+
+.bg { clear: both; }
+.right { float: right; }
+
+#aodev { width: 99%; padding: 0px; margin: 0;  }
+
+#aodev #toolbar { width: 100%; background-color: #ececec; padding: 6px; display: block; }
+#aodev #editor { padding: 0px; width: 100%; display: table; border-spacing: 25px; }
+
+#aodev #editor #left-menu { width: 250px; display: table-cell; }
+#aodev #editor #content { padding: 0 25px;  display: table-cell; }
+#aodev #editor #right-menu { width: 250px; display: table-cell; }
+
+#aodev #content textarea.editor { width: 100%; height: 300px; }
+
+.collapsible-pane { margin: 0 0 10px 0; padding: 0; }
+.collapsible-pane .header { font-size: 12px; font-weight: bold; color: #efefef; width: 100%; background-color: #6282af; padding: 1px 0; margin: 0; border: 1px solid #828282; cursor: pointer; }
+.collapsible-pane .content, .pane { display: block; width: 100%; border: 1px solid #828282; margin-bottom: 15px; padding: 0;  }
+.pane h3 { font-size: 12px; font-weight: bold; color: #efefef; width: 100%; background-color: #6282af; padding: 1px 0; margin: 0; }
+
+#username input { margin: 5px; width: 95%; }
+
+#files{ padding: 5px; margin: 0; font-family: monospace; }
+#files li { list-style-type: none; padding: 0; margin: 0; }
+#files li:hover { background-color: yellow; cursor: pointer; }
+#files li.selected { background-color: #ddddff;  }
+
+#chatpane { height: 350px; }
+#chatpane ul { padding: 5px; margin: 0;}
+#chatpane #chat { background-color: #efefef; font-size: 90%; height: 200px; overflow-y: auto; overflow-x: none; }
+#chatpane #chat li { list-style-type: none; padding: 0; margin: 0 0 3px 0; }
+#chatpane #chat li .user { font-weight: bold; color: blue; }
+#chatpane #chat li .user:after { content: ': '; }
+#chatpane li { list-style-type: none; padding: 0; margin: 2px 0; }
+#chatpane textarea { width: 240px; }
+
+#jslint { height: 200px; }
+#console { height: 200px; font-family: monospace; font-size: 85%; padding: 5px; overflow: auto; }
