@@ -4,7 +4,7 @@
     var nodeStatic = require('node-static');
     var publicFiles = new nodeStatic.Server('./public');
 
-    statSrv = new mystatic.Server({ addr: "127.0.0.1",
+    statSrv = new mystatic.Server({ addr: "localhost",
                                     port: 1337,
                                     files: ['png', 'css', 'jpg', 'html', 'gif', 'js']
                                   });
@@ -38,15 +38,25 @@
     statSrv.on('error', handleError);
 
     // CHAT
-    var chat = io.listen(statSrv.httpServer);
-    chat.connect();
+    var http = require('http');
+    var chatServer = http.createServer(function(req, res){
+      res.writeHead(200, {'Content-Type': 'text/html'});
+      res.end('<h1>Hello world</h1>');
+    });
+    chatServer.listen(6666);
 
-    chat.on('connect', function() {
+    var chat = io.listen(chatServer);
+
+    chat.on('connection', function(client) {
+      log('CHAT connect');
+
+      client.on('message', function() {
+        log('CHAT message');
+      });
+
+      client.on('disconnect', function() {
+        log('CHAT disconnect');
+      });
     });
 
-    chat.on('message', function() {
-    });
-
-    chat.on('disconnect', function() {
-    });
 })(require, console);
