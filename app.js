@@ -2,7 +2,10 @@
     var http = require('http');
     var mystatic = require('./mystatic');
 
-    statSrv = mystatic.Server({});
+    statSrv = mystatic.Server({ addr: "127.0.0.1",
+                                port: 1337,
+                                files: ['png', 'css', 'jpg', 'html', 'gif', 'js']
+                              });
 
 
     function handleError(request, response) {
