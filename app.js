@@ -1,7 +1,7 @@
 var http = require('http');
 
-var static = require('node-static');
-var public = new(static.Server)('./public');
+var node_static = require('node-static');
+var public_files = new node_static.Server('./public');
 
 function handleError(request, response) {
   response.writeHead(200, {'Content-Type': 'text/plain'});
@@ -13,10 +13,11 @@ function isRightFileFormat(url) {
 }
 
 http.createServer(function (request, response) {
-  if(!request.method == 'GET') { return handleError(request, response); }
+  if(request.method !== 'GET') { return handleError(request, response); }
   if(!isRightFileFormat(request.url)) { return handleError(request, response); }
+
   request.addListener('end', function () {
-    public.serve(request, response);
+    public_files.serve(request, response);
   });
 }).listen(1337, "127.0.0.1");
 
