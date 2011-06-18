@@ -1,7 +1,7 @@
 var http = require('http');
 
-var node_static = require('node-static');
-var public_files = new node_static.Server('./public');
+var nodeStatic = require('node-static');
+var publicFiles = new nodeStatic.Server('./public');
 
 function handleError(request, response) {
   response.writeHead(200, {'Content-Type': 'text/plain'});
@@ -17,7 +17,7 @@ http.createServer(function (request, response) {
   if(!isRightFileFormat(request.url)) { return handleError(request, response); }
 
   request.addListener('end', function () {
-    public_files.serve(request, response);
+    publicFiles.serve(request, response);
   });
 }).listen(1337, "127.0.0.1");
 
