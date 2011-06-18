@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>AGOSP</title>
+
+	<link href="css/jquery-ui-1.8.10.custom.css" rel="stylesheet" type="text/css" />
+	<link href="css/aodev.css" rel="stylesheet" type="text/css" />
+
+	<!--script src="http://192.168.0.7:8124/socket.io/socket.io.js"></script-->
+	
+	<script type="text/javascript" src="lib/jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="lib/jquery-ui-1.8.10.custom.min.js"></script>
+	
+	<script src="lib/codemirror/codemirror.js" type="text/javascript"></script>
+	
+	<script type="text/javascript" src="js/agosp-commons.js"></script>
+	<script type="text/javascript" src="js/agosp-events.js"></script>
+	<script type="text/javascript" src="js/agosp-socket.js"></script>
+	<script type="text/javascript" src="js/utils/agosp-xdajax.js"></script>
+	
+	<script type="text/javascript" src="js/agosp.js"></script>
+	<script type="text/javascript" src="js/ui/agosp-console.js"></script>
+	<script type="text/javascript" src="js/ui/agosp-chat.js"></script>
+	<script type="text/javascript" src="js/ui/agosp-file-list.js"></script>
+	<script type="text/javascript" src="js/ui/agosp-toolbar.js"></script>
+	<script type="text/javascript" src="js/ui/agosp-editor.js"></script>
+	
+</head>
+<body id="aodev">
+<div id="toolbar">
+	<input id="save-btn" type="button" value="Save" />
+	<input id="test-btn" type="button" value="Test" />
+	<input id="commit-btn" type="button" value="Commit" />
+</div>
+<div id="editor">
+	<div id="left-menu">
+		<div id="username" class="pane">
+			<h3>User name</h3>
+			<input type="text" id="user"/>
+		</div>
+		
+		<div class="collapsible-pane">
+			<div class="header">Files</div>
+			<div id="filespane" class="content">
+				<ul id="files">
+				</ul>
+			</div>
+		</div>
+		
+		<div id="chatpane" class="collapsible-pane">
+			<div class="header">Chat</div>
+			<div class="content">
+				<ul id="chat"></ul>
+				<div class="pane-content">
+					<ul>
+						<li><textarea id="message"></textarea></li>
+						<li><input type="button" id="sendmsg" value="Send"/></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<div id="contentaa">
+		<div class="collapsible-pane">
+			<h3 id="code-filename" class="header">&nbsp;</h3>
+			<div id="code-pane" class="content">
+				<textarea id="code" class="editor" name="code"></textarea>
+			</div>
+		</div>
+		<div class="collapsible-pane">
+			<h3 id="test-filename" class="header">&nbsp;</h3>
+			<div id="test-pane" class="content">
+				<textarea id="test" class="editor" name="test"></textarea>
+			</div>		
+		</div>
+	</div>
+	
+	
+	<div id="right-menu">
+		<div class="collapsible-pane">
+			<h3 class="header">JSLint</h3>
+			<div id="jslint-pane" class="content">
+				<div id="jslint"></div>
+				<input type="button" value="Check" class="right"/><div class="bg"></div>
+			</div>
+		</div>
+		<div class="collapsible-pane">
+			<h3 class="header">Console</h3>
+			<div id="jslint-pane" class="content">
+				<div id="console">Welcome to AOSP</div>
+			</div>
+		</div>		
+	</div>
+
+</div>
+</body>
+</html>
