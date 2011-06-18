@@ -1,5 +1,6 @@
 (function(require, console) {
   var http = require('http');
+  var mystatic = require('./mystatic');
 
   var nodeStatic = require('node-static');
   var publicFiles = new nodeStatic.Server('./public');
