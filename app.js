@@ -1,11 +1,10 @@
 (function(require, console) {
-    var http = require('http');
     var mystatic = require('./mystatic');
 
-    statSrv = mystatic.Server({ addr: "127.0.0.1",
-                                port: 1337,
-                                files: ['png', 'css', 'jpg', 'html', 'gif', 'js']
-                              });
+    statSrv = new mystatic.Server({ addr: "127.0.0.1",
+                                    port: 1337,
+                                    files: ['png', 'css', 'jpg', 'html', 'gif', 'js']
+                                  });
 
 
     function handleError(request, response) {
@@ -13,16 +12,16 @@
         response.end(request.url);
     }
 
-    statSrv.on('static', function(data) {
-        console.log('static content')
+    statSrv.on('static', function(request, response) {
+        console.log('static content'+ request.url)
     });
 
-    statSrv.on('dynamic', function(data) {
-        console.log('dynamic content')
+    statSrv.on('dynamic', function(request, response) {
+        console.log('dynamic content' + request.url)
     });
 
-    statSrv.on('error', function(data) {
-        console.log('error');
+    statSrv.on('error', function(request, response) {
+        console.log('error'+ request.url);
     });
 
-};
+})(require, console);
