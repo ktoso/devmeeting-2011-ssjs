@@ -1,10 +1,14 @@
+var mystatic = require('../mystatic');
+
 describe('mystatic', function() {
-  var mystatic = require('../mystatic');
 
   function fakeRequest(method, url) {
     return {
       url: url,
-      method: method
+      method: method,
+      addListener: function(event, callback) {
+        callback();
+      }
     };
   }
 
@@ -15,7 +19,7 @@ describe('mystatic', function() {
   var server;
 
   beforeEach(function() {
-    server = new mystatic.Server();
+    server = new mystatic.Server({});
   });
 
   it('triggers a static event given a static file url', function() {
@@ -27,7 +31,4 @@ describe('mystatic', function() {
     expect(callback).toHaveBeenCalled();
   });
 
-  it('returns filename', function() {
-
-  });
 });
