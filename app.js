@@ -15,15 +15,18 @@
     }
 
     statSrv.on('static', function(request, response) {
-        console.log('static content'+ request.url)
+        console.log('static content'+ request.url);
+        response.end();
     });
 
     statSrv.on('dynamic', function(request, response) {
-        console.log('dynamic content' + request.url)
+        console.log('dynamic content' + request.url);
+        response.end();
     });
 
     statSrv.on('error', function(request, response) {
         console.log('error'+ request.url);
+        response.end();
     });
 
 })(require, console);
