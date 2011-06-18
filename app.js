@@ -1,5 +1,6 @@
 (function(require, console) {
     var mystatic = require('./mystatic');
+    var io = require('socket.io');
     var nodeStatic = require('node-static');
     var publicFiles = new nodeStatic.Server('./public');
 
@@ -14,6 +15,8 @@
     function log(msg) {
       console.log(new Date().toTimeString() + ' ' + msg);
     }
+
+    // STATIC FILE HANDLING
 
     function handleError(request, response) {
       log("ERROR " + request.url);
@@ -34,4 +37,16 @@
     statSrv.on('static', handleStatic);
     statSrv.on('error', handleError);
 
+    // CHAT
+    var chat = io.listen(statSrv.httpServer);
+    chat.connect();
+
+    chat.on('connect', function() {
+    });
+
+    chat.on('message', function() {
+    });
+
+    chat.on('disconnect', function() {
+    });
 })(require, console);
