@@ -40,12 +40,14 @@ var server = function(conf) {
         });
     };
 
-    http.createServer(this.handle).listen(port, addr);
+    this.start = function() {
+        http.createServer(this.handle).listen(port, addr);
+    };
 
     console.log('Server running at http://127.0.0.1:1337/');
 
-
 };
+1
 
 util.inherits(server, EventEmitter);
 
