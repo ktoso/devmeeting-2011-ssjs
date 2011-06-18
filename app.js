@@ -1,27 +1,25 @@
 (function(require, console) {
-  var http = require('http');
-  var mystatic = require('./mystatic');
+    var http = require('http');
+    var mystatic = require('./mystatic');
 
-  var nodeStatic = require('node-static');
-  var publicFiles = new nodeStatic.Server('./public');
+    statSrv = mystatic.Server({});
 
-  function handleError(request, response) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
-    response.end(request.url);
-  }
 
-  function isRightFileFormat(url) {
-    return url.match(/\.(png|css|jpg|html|gif|js)$/);
-  }
+    function handleError(request, response) {
+        response.writeHead(200, {'Content-Type': 'text/plain'});
+        response.end(request.url);
+    }
 
-  http.createServer(function (request, response) {
-    if(request.method !== 'GET') { return handleError(request, response); }
-    if(!isRightFileFormat(request.url)) { return handleError(request, response); }
-
-    request.addListener('end', function () {
-      publicFiles.serve(request, response);
+    statSrv.on('static', function(data) {
+        console.log('static content')
     });
-  }).listen(1337, "127.0.0.1");
 
-  console.log('Server running at http://127.0.0.1:1337/');
-})(require, console);
+    statSrv.on('dynamic', function(data) {
+        console.log('dynamic content')
+    });
+
+    statSrv.on('error', function(data) {
+        console.log('error');
+    });
+
+};
