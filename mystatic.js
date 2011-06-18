@@ -28,15 +28,14 @@ var server = function(conf) {
 
     this.handle = function (request, response) {
         if (request.method !== 'GET') {
-            errorData(request, response);
+            return errorData(request, response);
         }
         if (!isRightFileFormat(request.url)) {
-            errorData(request, response);
+            return errorData(request, response);
         }
 
         request.addListener('end', function () {
-//            publicFiles.serve(request, response);
-            staticData(request, response);
+            return staticData(request, response);
         });
     };
 
